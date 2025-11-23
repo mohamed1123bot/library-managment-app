@@ -1,0 +1,33 @@
+package com.example.project10;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+@Entity
+public class Review {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private int rating;
+    private String comment;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+
+    private Member member;
+
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
+
+
+
+    public Review() {}
+
+}
